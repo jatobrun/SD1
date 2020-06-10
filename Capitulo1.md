@@ -71,4 +71,114 @@ cuando A y B son potencias de la misma Base
 
 > **Nota:** El ultimo numero de cada sistema es: el 9 en el sitema decimal, el 1 en el sistema binario, el 7 en el sistema octal, y la F en el sistema Hexadecimal. Luego de llegar a cualquiera de esos numeros regresamos al inicio que en todos los casos es el mismo el 0 y **"llevamos uno"**
 
-- **Resta** Se realiza algo diferente del metodo tradicional 
+- **Resta** 
+    1. Verificar si el minuendo es mayor al sustraendo si ese es el caso realizar la resta de la forma tradicional.
+    2. Caso contrario tomas una unidad de la columna de la izquierda siguiente.
+
+> **Nota:** La unidad que tomas de la izquierda o **"llevas uno"** en cantidad depende del sistema en el que estes, es decir, (1)(2) => (2)(10) == LLevar una unidad en el sistema binario equivale a llevar 2 unidades en el sistema decimal
+(1)(8) => (8)(10) y (1)(16) => (16)(10)
+
+## 1.4 Representacion de un numero negativo
+Agregamos un 0 = '+' o un 1 = '-' seguido de una coma al comienzo del numero binario binario para representar si es un numero positivo o negativo 
+
+## 1.5 Complemento de un numero binario 
+
+1. Invertimos el numero binario es decir los 0 se hacen 1 y los 1 se hacen 0
+2. A esta cantidad invertida le sumamos una unidad
+
+## 1.5.1 Complemento a cualquier base r
+>**(N)r,c = r^n - (N)r**
+
+Ejemplo
+    - (1234)10 ==> (1234)10,c = 10^4 - 1234 == (8766)10 = (1234)10,c
+
+## 1.5.2 Resta por complemento a base r
+Cuando restamos numeros sin signo por complemento a la base r si al final llevamos 1 este numero se lo ignora y el numero es positivo caso contrario no llevamos nada el numero es negativo 
+
+## 1.6 Codigos
+
+### ¿Que es un codigo?
+Los codigos son un conjuntos de simbolos que representan informacion 
+
+### ¿Que es codificar?
+Codificar es la accion de traducir informacion 
+
+### ¿Cuantos tipos de codigos existen?
+Bueno existen diversos tipos de codigos que se han usado a lo largo del mundo. Los mas relevantes son:
+- Codigo BCD o NBCD --> ()BCD
+- Codigo de exceso 3 --> ()xs3
+- Codigo de Gray --> ()Gray
+- Codigos alfanumerico o Codigo ASCII
+- Codigo de Deteccion de errores
+
+### Codigo BCD o NBCD
+Este codigo se lo usa para codificar numeros en base decimal a base binaria. Cada digito decimal se representa por su equivalente en 4 digitos binarios.
+
+Ejemplos:
+
+| Decimal |  BCD  |
+| :-------: | :-----: |
+|    0    | 0000  | 
+|    1    | 0001  |
+|    2    | 0010  |
+|    3    | 0011  |
+|    4    | 0100  |
+|    5    | 0101  |
+|    6    | 0110  |
+|    7    | 0111  |
+|    8    | 1000  |
+|    9    | 1001  |
+
+> *Pro Tip:* **Suma entre BCD** lo mas rapido es convertirlos a decimal, sumar los numeros en base decimal, y luego cada numero llevarlo a su representacion de 4 digitos en binario
+
+### Codigo Exceso de 3 
+Es parecido al BCD con la unica diferencia es que cada numero tiene un exceso de 3. Este codigo todavia es utilizado en algunas computadoras antiguas 
+
+Ejemplos:
+
+| Decimal |  BCD  |
+| :-------: | :-----: |
+|    0    | 0011  | 
+|    1    | 0100  |
+|    2    | 0101  |
+|    3    | 0110  |
+|    4    | 0111  |
+|    5    | 1000  |
+|    6    | 1001  |
+|    7    | 1010  |
+|    8    | 1011  |
+|    9    | 1100  |
+
+## Codigo Gray 
+Es otro tipo de código **basado** en un **sistema binario** pero de una construcción muy distinta a la de los demás códigos. Su principal característica es que **2 números sucesivos**, cualesquiera, **solo varían en 1 bit**.
+
+### De Binario a Gray 
+1. Agregamos un 0 al principio del numero binario. 
+2. Procedemos hacer la opereacion (EXOR u or exclusivo)  entre las parejas adyacentes.
+
+### De Gray a Binario 
+1. Desde la izquierda busco el primer 1 y lo escribo igual.
+2. Sigo escribiendo 1 hasta encontrar otro 1. 
+3. En la posicion donde encontre el 1 empiezo a escribir 0. 
+4. Sigo escribiendo 0 hasta encontrar otro 1. 
+5. Repetimos desde el paso 1.
+
+## Codigos Alfanumericos 
+Sirven para representar caracteres en la representacion idiomatica.
+- ASCII (American Standar Code for Information Interchange) 7 digitos
+    - Universalmente aceptado 
+    - Utilizado en la mayoria de las computadoras 
+    - La mayoria de los teclados llevan este estandar 
+- EBCDIC (Extended Binary Coded Decimal Interchange Code) 8 digitos 
+    - 128 caracteres adicionales  que IBM adopto para sus computadoras
+    - Es un estandar no oficial 
+    - Contiene caracteres en las siguientes categorias 
+        - Caracteres alfabetico no ingleses
+        - Simbolos de moneda no ingleses
+        - Letras griegas
+        - Simbolos matematicos 
+        - Caracteres para graficos 
+        - Caracteres para graficos de barras
+        - Caracteres sombreados 
+
+## Codigos de Deteccion de errores 
